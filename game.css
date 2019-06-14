@@ -1,5 +1,6 @@
-*{
-  outline: 1px solid black;
+body{
+  background: url(https://i.ytimg.com/vi/cpuBNp27jVw/maxresdefault.jpg);
+  color:#7fffd4;
 }
 img{
   width: 200px;

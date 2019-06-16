@@ -1,21 +1,7 @@
 
-let health = 100;
-//reduce damage by 50%
-let block = {
-  name: "Block",
-  modifier: .5,
-
-}
-//reduce damage by 100%
-let dodge = {
-  name: "Dodge",
-  modifier: 1,
-
-}
-//reduce damage by 100% & add border
-let barrier = {
-  name: "Barrier",
-  modifier: 1,
+let target = {
+  health: 100,
+  items: []
 }
 
 let items = {
@@ -25,31 +11,57 @@ let items = {
 }
 
 function drawhealth() {
-  if (health < 0) {
-    health = 0
+  if (target.health < 0) {
+    target.health = 0
   }
-  document.querySelector("#health").textContent = health.toString()
+  document.querySelector("#health").textContent = target.health.toString()
 }
 function slap() {
-  //Reduce health by 5
-  health -= 5
+  target.health -= 4 * addMods()
   drawhealth()
+  clearMods()
 }
 function punch() {
-  //Reduce health b10
-  health -= 10
+  target.health -= 10 * addMods()
   drawhealth()
+  clearMods()
 }
+
 function baseballBat() {
-  //Reduce health by 20
-  health -= 20
+  target.health -= 20 * addMods()
   drawhealth()
+  clearMods()
 }
 
 function reset() {
-  health = 100
+  target.health = 100
   drawhealth()
+  clearMods()
 }
-function addMods() {
 
+function block() {
+  target.items.push(items.block)
+}
+
+function dodge() {
+  target.items.push(items.dodge)
+}
+
+function barrier() {
+  target.items.push(items.barrier)
+}
+
+function addMods() {
+  let total = 1
+  if (target.items.length > 0) {
+    for (let index = 0; index < target.items.length; index++) {
+      let item = target.items[index];
+      total -= item.modifier
+    }
+  }
+  return total
+}
+
+function clearMods() {
+  target.items = [];
 }

@@ -58,10 +58,11 @@ function addMods() {
       let item = target.items[index];
       total -= item.modifier
     }
+    target.items = []
   }
   return total
 }
 
 function clearMods() {
-  target.items = [];
+  //target.items = [];
 }

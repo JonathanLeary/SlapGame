@@ -41,14 +41,17 @@ function reset() {
 
 function block() {
   target.items.push(items.block)
+  //alert("Target Prepares to block!")
 }
 
 function dodge() {
   target.items.push(items.dodge)
+  //alert("Target Prepares to Dodge")
 }
 
 function barrier() {
   target.items.push(items.barrier)
+  //alert("Target Activated a Barrier")
 }
 
 function addMods() {
